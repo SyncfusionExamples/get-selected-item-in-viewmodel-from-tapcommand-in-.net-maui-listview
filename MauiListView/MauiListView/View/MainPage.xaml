@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:local="clr-namespace:MauiListView"
+             x:Class="MauiListView.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:BookInfoRepository />
+    </ContentPage.BindingContext>
+
+    <syncfusion:SfListView x:Name="listView" 
+                   ItemsSource="{Binding BookInfo}"
+                   SelectionMode="Multiple"
+                   SelectionGesture="Tap"
+                   SelectedItems="{Binding SelectedItems}"
+                   TapCommand="{Binding TapCommand}"
+                   ItemSize="100">
+        <syncfusion:SfListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*" />
+                        <RowDefinition Height="0.6*" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding BookName}" FontAttributes="Bold" TextColor="Teal" FontSize="21" />
+                    <Label Grid.Row="1" Text="{Binding BookDescription}" TextColor="Teal" FontSize="15"/>
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+    </syncfusion:SfListView>
+
+</ContentPage>
